@@ -1,10 +1,22 @@
 import React from 'react';
 import Block from './blocks/Block.js'
 import Radium from 'radium'
+import Goblock from './blocks/Goblock.js'
+import Regularblock from './blocks/Regularblock.js'
 
 class Board extends React.Component {
+	getStyles(){
+		return {
+			width: '100vw',
+			height: '100vh'
+		};
+	}
+
 	render(){
-		return <Block width="small" imglink="http://www.rd.com/wp-content/uploads/sites/2/2016/02/06-train-cat-shake-hands.jpg"/>
+		return (<div>
+				<Goblock/>
+				<Regularblock color="green" text="Mediteranean avenue" cost={60}/>
+			</div>);
 	}
 }
 
