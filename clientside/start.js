@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 import {createStore} from 'redux';
 import reducer from './reducer'
 import Board_container from './Board_container'
+// import Radium from 'radium'
 
 const store = createStore(reducer);
 
