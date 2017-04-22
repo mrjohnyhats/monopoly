@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: './clientside/start.js',
     output: {
-        filename: 'bundle.js'
+        filename: './clientside/bundle.js'
     },
     module: {
         loaders: [
@@ -17,5 +17,8 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+	watchOptions: {
+		ignored: /node_modules/
+	}
 };

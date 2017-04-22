@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import {createStore} from 'redux';
+import reducer from './reducer'
+import Board_container from './Board_container'
 
-ReactDom.render(<div>hello world!</div>, document.getElementById('app'), () => {
-    console.log('works!');
-});
+const store = createStore(reducer);
+
+ReactDom.render(<Board_container store={store}/>, document.getElementById('app'));
