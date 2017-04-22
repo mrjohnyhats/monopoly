@@ -4982,16 +4982,17 @@ var Block = function (_React$Component) {
 		value: function getStyles() {
 			return {
 				base: {
-					height: '12vh',
+					height: '16vh',
 					display: 'inline-block',
 					border: '1px solid black',
-					margin: 0
+					margin: 0,
+					float: 'left'
 				},
 				small: {
-					width: '9vh'
+					width: '12vh'
 				},
 				large: {
-					width: '12vh'
+					width: '16vh'
 				}
 			};
 		}
@@ -12305,6 +12306,10 @@ var _Regularblock = __webpack_require__(128);
 
 var _Regularblock2 = _interopRequireDefault(_Regularblock);
 
+var _Imageblock = __webpack_require__(308);
+
+var _Imageblock2 = _interopRequireDefault(_Imageblock);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12337,7 +12342,8 @@ var Board = function (_React$Component) {
 				'div',
 				null,
 				_react2.default.createElement(_Goblock2.default, null),
-				_react2.default.createElement(_Regularblock2.default, { color: 'green', text: 'Mediteranean avenue', cost: 60 })
+				_react2.default.createElement(_Regularblock2.default, { color: 'green', text: 'Mediteranean avenue', cost: 60 }),
+				_react2.default.createElement(_Imageblock2.default, { text: 'community chest', imgsrc: 'graphics/community_chest.png' })
 			);
 		}
 	}]);
@@ -12475,10 +12481,11 @@ var Regularblock = function (_React$Component) {
 					display: 'block'
 				},
 				base: {
-					fontSize: '13px'
+					fontSize: '12px'
 				},
-				text: {
-					margin: '0'
+				texts: {
+					width: '100%',
+					textAlign: 'center'
 				}
 			};
 		}
@@ -12493,12 +12500,12 @@ var Regularblock = function (_React$Component) {
 				_react2.default.createElement('span', { style: ribbonStyles }),
 				_react2.default.createElement(
 					'p',
-					{ style: this.getStyles().text },
+					{ style: this.getStyles().texts },
 					this.props.text
 				),
 				_react2.default.createElement(
 					'p',
-					null,
+					{ style: this.getStyles().texts },
 					"$" + this.props.cost
 				)
 			);
@@ -30553,6 +30560,94 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(75);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(29);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Block = __webpack_require__(38);
+
+var _Block2 = _interopRequireDefault(_Block);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Imageblock = function (_React$Component) {
+	_inherits(Imageblock, _React$Component);
+
+	function Imageblock() {
+		_classCallCheck(this, Imageblock);
+
+		return _possibleConstructorReturn(this, (Imageblock.__proto__ || Object.getPrototypeOf(Imageblock)).apply(this, arguments));
+	}
+
+	_createClass(Imageblock, [{
+		key: 'getStyles',
+		value: function getStyles() {
+			return {
+				text: {
+					width: '100%',
+					textAlign: 'center'
+				},
+				img: {
+					maxHeight: '80%',
+					maxWidth: '80%',
+					margin: 'auto',
+					display: 'block'
+				}
+			};
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				_Block2.default,
+				{ width: 'small' },
+				_react2.default.createElement(
+					'p',
+					{ style: this.getStyles().text },
+					this.props.text
+				),
+				_react2.default.createElement('img', { style: this.getStyles().img, src: this.props.imgsrc })
+			);
+		}
+	}]);
+
+	return Imageblock;
+}(_react2.default.Component);
+
+Imageblock.propTypes = {
+	text: _propTypes2.default.string.isRequired,
+	imgsrc: _propTypes2.default.string.isRequired
+};
+
+exports.default = (0, _radium2.default)(Imageblock);
 
 /***/ })
 /******/ ]);

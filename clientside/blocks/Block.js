@@ -6,16 +6,17 @@ class Block extends React.Component {
 	getStyles(){
 		return {
 			base: {
-				height: '12vh',
+				height: '16vh',
 				display: 'inline-block',
 				border: '1px solid black',
-				margin: 0
+				margin: 0,
+				float: 'left'
 			},
 			small: {
-				width: '9vh'
+				width: '12vh'
 			},
 			large: {
-				width: '12vh'
+				width: '16vh'
 			}
 		}
 	}

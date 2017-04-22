@@ -12,10 +12,11 @@ class Regularblock extends React.Component {
 				display: 'block'
 			},
 			base: {
-				fontSize: '13px',
+				fontSize: '12px',
 			},
-			text: {
-				margin: '0'
+			texts: {
+				width: '100%',
+				textAlign: 'center'
 			}
 		};
 	}
@@ -28,8 +29,8 @@ class Regularblock extends React.Component {
 
 		return (<Block width="small" style={this.getStyles().base}>
 				<span style={ribbonStyles}></span>
-				<p style={this.getStyles().text}>{this.props.text}</p>
-				<p>{"$"+this.props.cost}</p>
+				<p style={this.getStyles().texts}>{this.props.text}</p>
+				<p style={this.getStyles().texts}>{"$"+this.props.cost}</p>
 			</Block>)
 	}
 }
