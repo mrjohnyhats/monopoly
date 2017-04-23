@@ -12466,17 +12466,19 @@ var Imageblock = function (_React$Component) {
 				text: {
 					width: '100%',
 					textAlign: 'center',
-					fontSize: '1.5vh',
 					height: '10%',
-					marginTop: '10%'
+					marginTop: '5%'
 				},
 				img: {
 					maxHeight: '50%',
 					maxWidth: '80%',
-					marginTop: '10%',
+					padding: '10%',
 					marginLeft: 'auto',
 					marginRight: 'auto',
 					display: 'block'
+				},
+				cost: {
+					marginBottom: '2%'
 				}
 			};
 		}
@@ -12488,7 +12490,7 @@ var Imageblock = function (_React$Component) {
 			if (this.props.cost != undefined) {
 				cost = _react2.default.createElement(
 					'p',
-					{ style: this.getStyles().text },
+					{ style: [this.getStyles().text, this.getStyles().cost] },
 					"$" + this.props.cost
 				);
 			}
@@ -12575,9 +12577,7 @@ var Regularblock = function (_React$Component) {
 					height: '20%',
 					display: 'block'
 				},
-				base: {
-					fontSize: '1.5vh'
-				},
+				base: {},
 				texts: {
 					width: '100%',
 					textAlign: 'center'
@@ -30681,6 +30681,10 @@ var _Goblock = __webpack_require__(127);
 
 var _Goblock2 = _interopRequireDefault(_Goblock);
 
+var _Cchestblock = __webpack_require__(312);
+
+var _Cchestblock2 = _interopRequireDefault(_Cchestblock);
+
 var _Regularblock = __webpack_require__(129);
 
 var _Regularblock2 = _interopRequireDefault(_Regularblock);
@@ -30723,9 +30727,9 @@ var Bottomrow = function (_React$Component) {
 				_react2.default.createElement(_Regularblock2.default, { color: 'lightblue', text: 'Vermont Avenue', cost: 100 }),
 				_react2.default.createElement(_Imageblock2.default, { text: 'chance', imgsrc: 'graphics/chance.png' }),
 				_react2.default.createElement(_Regularblock2.default, { color: 'lightblue', text: 'Oriental Avenue', cost: 100 }),
-				_react2.default.createElement(_Imageblock2.default, { text: 'reading railroad', imgsrc: 'graphics/reading_railroad.png', cost: 200 }),
+				_react2.default.createElement(_Imageblock2.default, { text: 'reading railroad', imgsrc: 'graphics/train.png', cost: 200 }),
 				_react2.default.createElement(_Imageblock2.default, { imgsrc: 'graphics/income_tax.png' }),
-				_react2.default.createElement(_Imageblock2.default, { text: 'community chest', imgsrc: 'graphics/community_chest.png', cost: 10 }),
+				_react2.default.createElement(_Cchestblock2.default, null),
 				_react2.default.createElement(_Regularblock2.default, { color: 'green', text: 'Mediteranean Avenue', cost: 60 }),
 				_react2.default.createElement(_Regularblock2.default, { color: 'lightblue', text: 'Connecticut Avenue', cost: 120 }),
 				_react2.default.createElement(_Goblock2.default, null)
@@ -30785,10 +30789,17 @@ var Jailblock = function (_React$Component) {
 		value: function getStyles() {
 			return {
 				img: {
-					height: '80%',
-					width: '100%'
+					maxHeight: '70%',
+					maxWidth: '100%',
+					display: 'block',
+					marginLeft: 'auto',
+					marginRight: 'auto'
 				},
-				text: {}
+				text: {
+					width: '100%',
+					textAlign: 'center',
+					marginBottom: '10%'
+				}
 			};
 		}
 	}, {
@@ -30801,7 +30812,7 @@ var Jailblock = function (_React$Component) {
 				_react2.default.createElement(
 					'p',
 					{ style: this.getStyles().text },
-					'go to jail :('
+					'go to jail'
 				)
 			);
 		}
@@ -30837,6 +30848,10 @@ var _Jailblock = __webpack_require__(310);
 
 var _Jailblock2 = _interopRequireDefault(_Jailblock);
 
+var _Cchestblock = __webpack_require__(312);
+
+var _Cchestblock2 = _interopRequireDefault(_Cchestblock);
+
 var _Regularblock = __webpack_require__(129);
 
 var _Regularblock2 = _interopRequireDefault(_Regularblock);
@@ -30863,12 +30878,30 @@ var Rightrow = function (_React$Component) {
 	}
 
 	_createClass(Rightrow, [{
+		key: 'getStyles',
+		value: function getStyles() {
+			return {
+				transform: 'rotate(270deg)',
+				border: '1px solid red',
+				display: 'inline-block'
+			};
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				null,
-				_react2.default.createElement(_Jailblock2.default, null)
+				{ style: this.getStyles() },
+				_react2.default.createElement(_Jailblock2.default, null),
+				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'St. Charles Place', cost: 140 }),
+				_react2.default.createElement(_Imageblock2.default, { text: 'Electric Company', imgsrc: 'graphics/lightbulb.png', cost: 150 }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'States Avenue', cost: 140 }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'Virginia Avenue', cost: 160 }),
+				_react2.default.createElement(_Imageblock2.default, { text: 'Pennsylvania railroad', imgsrc: 'graphics/train.png', cost: 200 }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'St. James Place', cost: 180 }),
+				_react2.default.createElement(_Cchestblock2.default, null),
+				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'Tennessee Avenue', cost: 180 }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'New York Avenue', cost: 200 })
 			);
 		}
 	}]);
@@ -30877,6 +30910,60 @@ var Rightrow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _radium2.default)(Rightrow);
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radium = __webpack_require__(25);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Imageblock = __webpack_require__(128);
+
+var _Imageblock2 = _interopRequireDefault(_Imageblock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Cchestblock = function (_React$Component) {
+	_inherits(Cchestblock, _React$Component);
+
+	function Cchestblock() {
+		_classCallCheck(this, Cchestblock);
+
+		return _possibleConstructorReturn(this, (Cchestblock.__proto__ || Object.getPrototypeOf(Cchestblock)).apply(this, arguments));
+	}
+
+	_createClass(Cchestblock, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(_Imageblock2.default, { text: 'community chest', imgsrc: 'graphics/community_chest.png' });
+		}
+	}]);
+
+	return Cchestblock;
+}(_react2.default.Component);
+
+exports.default = (0, _radium2.default)(Cchestblock);
 
 /***/ })
 /******/ ]);

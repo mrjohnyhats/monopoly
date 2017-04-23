@@ -9,17 +9,19 @@ class Imageblock extends React.Component {
 			text: {
 				width: '100%',
 				textAlign: 'center',
-				fontSize: '1.5vh',
 				height: '10%',
-				marginTop: '10%'
+				marginTop: '5%',
 			},
 			img: {
 				maxHeight: '50%',
 				maxWidth: '80%',
-				marginTop: '10%',
+				padding: '10%',
 				marginLeft: 'auto',
 				marginRight: 'auto',
-				display: 'block',
+				display: 'block'
+			},
+			cost: {
+				marginBottom: '2%'
 			}
 		}
 	}
@@ -27,7 +29,7 @@ class Imageblock extends React.Component {
 	render(){
 		let cost, text;
 		if(this.props.cost != undefined){
-			cost = <p style={this.getStyles().text}>{"$"+this.props.cost}</p>;
+			cost = <p style={[this.getStyles().text, this.getStyles().cost]}>{"$"+this.props.cost}</p>;
 		}
 		if(this.props.text 	!= undefined){
 			text = <p style={this.getStyles().text}>{this.props.text}</p>
