@@ -12,7 +12,7 @@ class Regularblock extends React.Component {
 				display: 'block'
 			},
 			base: {
-				fontSize: '12px',
+				fontSize: '1.5vh',
 			},
 			texts: {
 				width: '100%',
