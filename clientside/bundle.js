@@ -3622,29 +3622,60 @@ var Block = function (_React$Component) {
 		value: function getStyles() {
 			return {
 				base: {
-					height: '15vw',
-					display: 'inline-block',
-					border: '1px solid black',
-					margin: 0,
-					float: 'left'
+					horizontal: {
+						height: '15vw',
+						display: 'inline-block',
+						border: '1px solid black',
+						margin: 0,
+						float: 'left'
+					},
+					vertical: {
+						width: '15vw',
+						display: 'block',
+						border: '1px solid black',
+						margin: 0,
+						float: 'left'
+					}
 				},
 				small: {
-					width: '8.55vw'
+					vertical: {
+						height: '8.75vh'
+					},
+					horizontal: {
+						width: '8.75vw'
+					}
 				},
 				large: {
-					width: '15vw'
+					vertical: {
+						height: '15vh'
+					},
+					horizontal: {
+						width: '15vw'
+					}
 				}
 			};
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var styles = [this.getStyles().base];
+			var styles = void 0;
 
-			if (this.props.width == "small") {
-				styles.push(this.getStyles().small);
-			} else {
-				styles.push(this.getStyles().large);
+			if (this.props.orientation == "horizontal") {
+				styles = [this.getStyles().base.horizontal];
+
+				if (this.props.width == "small") {
+					styles.push(this.getStyles().small.horizontal);
+				} else {
+					styles.push(this.getStyles().large.horizontal);
+				}
+			} else if (this.props.orientation == "vertical") {
+				styles = [this.getStyles().base.vertical];
+
+				if (this.props.width == "small") {
+					styles.push(this.getStyles().small.vertical);
+				} else {
+					styles.push(this.getStyles().large.vertical);
+				}
 			}
 
 			if (this.props.style != undefined) {
@@ -3663,7 +3694,12 @@ var Block = function (_React$Component) {
 }(_react2.default.Component);
 
 Block.propTypes = {
-	width: _propTypes2.default.string.isRequired
+	width: _propTypes2.default.string.isRequired,
+	orientation: _propTypes2.default.string
+};
+
+Block.defaultProps = {
+	orientation: 'horizontal'
 };
 
 exports.default = (0, _radium2.default)(Block);
@@ -4949,7 +4985,7 @@ var Imageblock = function (_React$Component) {
 			}
 			return _react2.default.createElement(
 				_Block2.default,
-				{ width: 'small' },
+				{ width: 'small', orientation: this.props.orientation },
 				text,
 				_react2.default.createElement('img', { style: this.getStyles().img, src: this.props.imgsrc }),
 				cost
@@ -4964,6 +5000,10 @@ Imageblock.propTypes = {
 	text: _propTypes2.default.string,
 	imgsrc: _propTypes2.default.string.isRequired,
 	cost: _propTypes2.default.number
+};
+
+Imageblock.defaulsProps = {
+	orientation: 'horizontal'
 };
 
 exports.default = (0, _radium2.default)(Imageblock);
@@ -7468,12 +7508,16 @@ var Cchestblock = function (_React$Component) {
 	_createClass(Cchestblock, [{
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_Imageblock2.default, { text: 'community chest', imgsrc: 'graphics/community_chest.png' });
+			return _react2.default.createElement(_Imageblock2.default, { text: 'community chest', orientation: this.props.orientation, imgsrc: 'graphics/community_chest.png' });
 		}
 	}]);
 
 	return Cchestblock;
 }(_react2.default.Component);
+
+Cchestblock.defaultProps = {
+	orientation: 'horizontal'
+};
 
 exports.default = (0, _radium2.default)(Cchestblock);
 
@@ -7546,7 +7590,7 @@ var Regularblock = function (_React$Component) {
 
 			return _react2.default.createElement(
 				_Block2.default,
-				{ width: 'small', style: this.getStyles().base },
+				{ width: 'small', style: this.getStyles().base, orientation: this.props.orientation },
 				_react2.default.createElement('span', { style: ribbonStyles }),
 				_react2.default.createElement(
 					'p',
@@ -7569,6 +7613,10 @@ Regularblock.propTypes = {
 	color: _propTypes2.default.string.isRequired,
 	text: _propTypes2.default.string.isRequired,
 	cost: _propTypes2.default.number.isRequired
+};
+
+Regularblock.defaultProps = {
+	orientation: 'horizontal'
 };
 
 exports.default = (0, _radium2.default)(Regularblock);
@@ -12742,7 +12790,7 @@ var Goblock = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				_Block2.default,
-				{ width: 'large', style: this.getStyles() },
+				{ width: 'large', orientation: this.props.orientation, style: this.getStyles() },
 				'GO'
 			);
 		}
@@ -12750,6 +12798,10 @@ var Goblock = function (_React$Component) {
 
 	return Goblock;
 }(_react2.default.Component);
+
+Goblock.defaultProps = {
+	orientation: 'horizontal'
+};
 
 exports.default = (0, _radium2.default)(Goblock);
 
@@ -12818,7 +12870,7 @@ var Jailblock = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				_Block2.default,
-				{ width: 'large' },
+				{ width: 'large', orientation: this.props.orientation },
 				_react2.default.createElement('img', { style: this.getStyles().img, src: 'graphics/jail.png' }),
 				_react2.default.createElement(
 					'p',
@@ -12831,6 +12883,10 @@ var Jailblock = function (_React$Component) {
 
 	return Jailblock;
 }(_react2.default.Component);
+
+Jailblock.defaultProps = {
+	orientation: 'horizontal'
+};
 
 exports.default = (0, _radium2.default)(Jailblock);
 
@@ -29279,14 +29335,8 @@ var Leftrow = function (_React$Component) {
 		key: 'getStyles',
 		value: function getStyles() {
 			return {
-				position: 'absolute',
 				border: '1px solid red',
-				bottom: '0',
-				maxHeight: '15vw',
-				right: '-8.75vw',
-				display: 'inline-block',
-				transformOrigin: '0% 100%',
-				transform: 'rotate(-90deg)'
+				maxHeight: '15vw'
 			};
 		}
 	}, {
@@ -29296,15 +29346,15 @@ var Leftrow = function (_React$Component) {
 				'div',
 				{ style: this.getStyles() },
 				_react2.default.createElement(_Jailblock2.default, null),
-				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'St. Charles Place', cost: 140 }),
-				_react2.default.createElement(_Imageblock2.default, { text: 'Electric Company', imgsrc: 'graphics/lightbulb.png', cost: 150 }),
-				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'States Avenue', cost: 140 }),
-				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'Virginia Avenue', cost: 160 }),
-				_react2.default.createElement(_Imageblock2.default, { text: 'Pennsylvania railroad', imgsrc: 'graphics/train.png', cost: 200 }),
-				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'St. James Place', cost: 180 }),
-				_react2.default.createElement(_Cchestblock2.default, null),
-				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'Tennessee Avenue', cost: 180 }),
-				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'New York Avenue', cost: 200 })
+				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'St. Charles Place', cost: 140, orientation: 'vertical' }),
+				_react2.default.createElement(_Imageblock2.default, { text: 'Electric Company', imgsrc: 'graphics/lightbulb.png', cost: 150, orientation: 'vertical' }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'States Avenue', cost: 140, orientation: 'vertical' }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'magenta', text: 'Virginia Avenue', cost: 160, orientation: 'vertical' }),
+				_react2.default.createElement(_Imageblock2.default, { text: 'Pennsylvania railroad', imgsrc: 'graphics/train.png', cost: 200, orientation: 'vertical' }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'St. James Place', cost: 180, orientation: 'vertical' }),
+				_react2.default.createElement(_Cchestblock2.default, { orientation: 'vertical' }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'Tennessee Avenue', cost: 180, orientation: 'vertical' }),
+				_react2.default.createElement(_Regularblock2.default, { color: 'orange', text: 'New York Avenue', cost: 200, orientation: 'vertical' })
 			);
 		}
 	}]);

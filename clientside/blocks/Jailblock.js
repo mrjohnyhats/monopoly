@@ -21,11 +21,15 @@ class Jailblock extends React.Component {
 	}
 
 	render(){
-		return(<Block width="large">
+		return(<Block width="large" orientation={this.props.orientation}>
 				<img style={this.getStyles().img} src="graphics/jail.png"/>
 				<p style={this.getStyles().text}>go to jail</p>
 			</Block>);
 	}
 }
+
+Jailblock.defaultProps = {
+	orientation: 'horizontal'
+};
 
 export default Radium(Jailblock)

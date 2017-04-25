@@ -34,7 +34,7 @@ class Imageblock extends React.Component {
 		if(this.props.text 	!= undefined){
 			text = <p style={this.getStyles().text}>{this.props.text}</p>
 		}
-		return (<Block width="small">
+		return (<Block width="small" orientation={this.props.orientation}>
 				{text}
 				<img style={this.getStyles().img} src={this.props.imgsrc}/>
 				{cost}
@@ -46,6 +46,10 @@ Imageblock.propTypes = {
 	text: PropTypes.string,
 	imgsrc: PropTypes.string.isRequired,
 	cost: PropTypes.number
+};
+
+Imageblock.defaulsProps = {
+	orientation: 'horizontal'
 };
 
 export default Radium(Imageblock);

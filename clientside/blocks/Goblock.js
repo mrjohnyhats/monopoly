@@ -14,10 +14,14 @@ class Goblock extends React.Component {
 	}
 
 	render(){
-		return (<Block width="large" style={this.getStyles()}>
+		return (<Block width="large" orientation={this.props.orientation} style={this.getStyles()}>
 				GO
 			</Block>)
 	}
 }
+
+Goblock.defaultProps = {
+	orientation: 'horizontal'
+};
 
 export default Radium(Goblock)

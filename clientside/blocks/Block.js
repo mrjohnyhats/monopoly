@@ -6,29 +6,61 @@ class Block extends React.Component {
 	getStyles(){
 		return {
 			base: {
-				height: '15vw',
-				display: 'inline-block',
-				border: '1px solid black',
-				margin: 0,
-				float: 'left'
+				horizontal: {
+					height: '15vw',
+					display: 'inline-block',
+					border: '1px solid black',
+					margin: 0,
+					float: 'left'
+				},
+				vertical: {
+					width: '15vw',
+					display: 'block',
+					border: '1px solid black',
+					margin: 0,
+					float: 'left'
+				}
 			},
 			small: {
-				width: '8.55vw'
+				vertical: {
+					height: '8.75vh'
+				},
+				horizontal: {
+					width: '8.75vw'
+				}
 			},
 			large: {
-				width: '15vw'
+				vertical: {
+					height: '15vh'
+				},
+				horizontal: {
+					width: '15vw'
+				}
 			}
 		}
 	}
 
 	render(){
-		let styles = [this.getStyles().base];
+		let styles;
 
-		if(this.props.width == "small"){
-			styles.push(this.getStyles().small);
-		} else {
-			styles.push(this.getStyles().large);
+		if(this.props.orientation == "horizontal"){
+			styles = [this.getStyles().base.horizontal];
+
+			if(this.props.width == "small"){
+				styles.push(this.getStyles().small.horizontal);
+			} else {
+				styles.push(this.getStyles().large.horizontal);
+			}
+		} else if(this.props.orientation == "vertical"){
+			styles = [this.getStyles().base.vertical];
+
+			if(this.props.width == "small"){
+				styles.push(this.getStyles().small.vertical);
+			} else {
+				styles.push(this.getStyles().large.vertical);
+			}
 		}
+
 
 		if(this.props.style != undefined){
 			styles = styles.concat(this.props.style);
@@ -41,7 +73,12 @@ class Block extends React.Component {
 }
 
 Block.propTypes = {
-	width: PropTypes.string.isRequired
+	width: PropTypes.string.isRequired,
+	orientation: PropTypes.string
 };
+
+Block.defaultProps = {
+	orientation: 'horizontal'
+}
 
 export default Radium(Block);

@@ -26,7 +26,7 @@ class Regularblock extends React.Component {
 			{backgroundColor: this.props.color}
 		];
 
-		return (<Block width="small" style={this.getStyles().base}>
+		return (<Block width="small" style={this.getStyles().base} orientation={this.props.orientation}>
 				<span style={ribbonStyles}></span>
 				<p style={this.getStyles().texts}>{this.props.text}</p>
 				<p style={this.getStyles().texts}>{"$"+this.props.cost}</p>
@@ -39,5 +39,9 @@ Regularblock.propTypes = {
 	text: PropTypes.string.isRequired,
 	cost: PropTypes.number.isRequired
 }
+
+Regularblock.defaultProps = {
+	orientation: 'horizontal'
+};
 
 export default Radium(Regularblock);
