@@ -3622,27 +3622,22 @@ var Block = function (_React$Component) {
 		value: function getStyles() {
 			return {
 				base: {
-					horizontal: {
-						height: '15vw',
-						display: 'inline-block',
-						border: '1px solid black',
-						margin: 0,
-						float: 'left'
-					},
-					vertical: {
-						width: '15vw',
-						display: 'block',
-						border: '1px solid black',
-						margin: 0,
-						float: 'left'
-					}
+					height: '15vw',
+					display: 'inline-block',
+					border: '1px solid black',
+					margin: 0,
+					float: 'left'
+				},
+				vertical: {
+					width: '15vw',
+					display: 'block'
 				},
 				small: {
 					vertical: {
-						height: '8.75vh'
+						height: '8.5vh'
 					},
 					horizontal: {
-						width: '8.75vw'
+						width: '8.5vw'
 					}
 				},
 				large: {
@@ -3661,7 +3656,7 @@ var Block = function (_React$Component) {
 			var styles = void 0;
 
 			if (this.props.orientation == "horizontal") {
-				styles = [this.getStyles().base.horizontal];
+				styles = [this.getStyles().base];
 
 				if (this.props.width == "small") {
 					styles.push(this.getStyles().small.horizontal);
@@ -3669,7 +3664,7 @@ var Block = function (_React$Component) {
 					styles.push(this.getStyles().large.horizontal);
 				}
 			} else if (this.props.orientation == "vertical") {
-				styles = [this.getStyles().base.vertical];
+				styles = [this.getStyles().base, this.getStyles().vertical];
 
 				if (this.props.width == "small") {
 					styles.push(this.getStyles().small.vertical);
@@ -29336,7 +29331,10 @@ var Leftrow = function (_React$Component) {
 		value: function getStyles() {
 			return {
 				border: '1px solid red',
-				maxHeight: '15vw'
+				maxWidth: '15vw',
+				position: 'absolute',
+				left: 0,
+				bottom: 0
 			};
 		}
 	}, {

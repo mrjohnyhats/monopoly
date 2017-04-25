@@ -9,8 +9,10 @@ class Leftrow extends React.Component {
 	getStyles(){
 		return {
 			border: '1px solid red',
-			maxHeight: '15vw',
-			// display: 'inline-block',
+			maxWidth: '15vw',
+			position: 'absolute',
+			left: 0,
+			bottom: 0
 		}
 	}
 
