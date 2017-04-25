@@ -5,12 +5,17 @@ import Cchestblock from './Cchestblock'
 import Regularblock from './Regularblock'
 import Imageblock from './Imageblock'
 
-class Rightrow extends React.Component {
+class Leftrow extends React.Component {
 	getStyles(){
 		return {
-			transform: 'rotate(270deg)',
+			position: 'absolute',
 			border: '1px solid red',
-			display: 'inline-block'
+			bottom: '0',
+			maxHeight: '15vw',
+			right: '-8.75vw',
+			display: 'inline-block',
+			transformOrigin: '0% 100%',
+			transform: 'rotate(-90deg)'
 		}
 	}
 
@@ -30,4 +35,4 @@ class Rightrow extends React.Component {
 	}
 }
 
-export default Radium(Rightrow)
+export default Radium(Leftrow)

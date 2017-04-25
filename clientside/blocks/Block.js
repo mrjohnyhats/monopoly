@@ -13,7 +13,7 @@ class Block extends React.Component {
 				float: 'left'
 			},
 			small: {
-				width: '8.75vw'
+				width: '8.55vw'
 			},
 			large: {
 				width: '15vw'
