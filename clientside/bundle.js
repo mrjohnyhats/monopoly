@@ -29500,6 +29500,10 @@ var _Parkingblock = __webpack_require__(299);
 
 var _Parkingblock2 = _interopRequireDefault(_Parkingblock);
 
+var _Chanceblock = __webpack_require__(301);
+
+var _Chanceblock2 = _interopRequireDefault(_Chanceblock);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -29545,6 +29549,77 @@ var Toprow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _radium2.default)(Toprow);
+
+/***/ }),
+/* 301 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(20);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(14);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Imageblock = __webpack_require__(38);
+
+var _Imageblock2 = _interopRequireDefault(_Imageblock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Chanceblock = function (_React$Component) {
+    _inherits(Chanceblock, _React$Component);
+
+    function Chanceblock() {
+        _classCallCheck(this, Chanceblock);
+
+        return _possibleConstructorReturn(this, (Chanceblock.__proto__ || Object.getPrototypeOf(Chanceblock)).apply(this, arguments));
+    }
+
+    _createClass(Chanceblock, [{
+        key: 'getImagePaths',
+        value: function getImagePaths() {
+            return {
+                'pink': 'graphics/chance/pink.png',
+                'blue': 'graphics/chance/blue.png',
+                'orange': 'graphics/chance/orange.png'
+            };
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_Imageblock2.default, { text: 'chance', orientation: this.props.orientation, imgsrc: this.getImagePaths()[this.props.color] });
+        }
+    }]);
+
+    return Chanceblock;
+}(_react2.default.Component);
+
+Chanceblock.propTypes = {
+    color: _propTypes2.default.string,
+    orientation: _propTypes2.default.string
+};
+
+Chanceblock.defaultProps = {
+    color: 'pink',
+    orientation: 'horizontal'
+};
 
 /***/ })
 /******/ ]);

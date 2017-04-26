@@ -4,6 +4,7 @@ import Cchestblock from './Cchestblock'
 import Regularblock from './Regularblock'
 import Imageblock from './Imageblock'
 import Parkingblock from './Parkingblock'
+import Chanceblock from './Chanceblock'
 
 
 class Toprow extends React.Component {
