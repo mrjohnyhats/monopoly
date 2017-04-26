@@ -6,7 +6,8 @@ class Block extends React.Component {
 	getStyles(){
 		return {
 			base: {
-				height: '12vw',
+				height: '12vh',
+				width: '12vw',
 				display: 'inline-block',
 				border: '1px solid black',
 				margin: 0,
@@ -18,18 +19,10 @@ class Block extends React.Component {
 			},
 			small: {
 				vertical: {
-					height: '8.2vh'
+					height: '8.18vh'
 				},
 				horizontal: {
-					width: '8.2vw'
-				}
-			},
-			large: {
-				vertical: {
-					height: '12vh'
-				},
-				horizontal: {
-					width: '12vw'
+					width: '8.18vw'
 				}
 			}
 		}
@@ -43,8 +36,6 @@ class Block extends React.Component {
 
 			if(this.props.width == "small"){
 				styles.push(this.getStyles().small.horizontal);
-			} else {
-				styles.push(this.getStyles().large.horizontal);
 			}
 		} else if(this.props.orientation == "vertical"){
 			styles = [this.getStyles().base, this.getStyles().vertical];

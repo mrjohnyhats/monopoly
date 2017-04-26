@@ -2,6 +2,7 @@ import React from 'react';
 import Radium from 'radium'
 import Bottomrow from './blocks/Bottomrow'
 import Leftrow from './blocks/Leftrow'
+import Toprow from './blocks/Toprow'
 
 
 class Board extends React.Component {
@@ -16,8 +17,9 @@ class Board extends React.Component {
 		return (<div style={this.getStyles()}>
 				<Bottomrow/>
 				<Leftrow/>
+				<Toprow/>
 			</div>);
 	}
 }
 
-export default Radium(Board)
+export default Radium(Board);

@@ -3622,7 +3622,8 @@ var Block = function (_React$Component) {
 		value: function getStyles() {
 			return {
 				base: {
-					height: '12vw',
+					height: '12vh',
+					width: '12vw',
 					display: 'inline-block',
 					border: '1px solid black',
 					margin: 0,
@@ -3634,18 +3635,10 @@ var Block = function (_React$Component) {
 				},
 				small: {
 					vertical: {
-						height: '8.2vh'
+						height: '8.18vh'
 					},
 					horizontal: {
-						width: '8.2vw'
-					}
-				},
-				large: {
-					vertical: {
-						height: '12vh'
-					},
-					horizontal: {
-						width: '12vw'
+						width: '8.18vw'
 					}
 				}
 			};
@@ -3660,8 +3653,6 @@ var Block = function (_React$Component) {
 
 				if (this.props.width == "small") {
 					styles.push(this.getStyles().small.horizontal);
-				} else {
-					styles.push(this.getStyles().large.horizontal);
 				}
 			} else if (this.props.orientation == "vertical") {
 				styles = [this.getStyles().base, this.getStyles().vertical];
@@ -12615,6 +12606,10 @@ var _Leftrow = __webpack_require__(298);
 
 var _Leftrow2 = _interopRequireDefault(_Leftrow);
 
+var _Toprow = __webpack_require__(300);
+
+var _Toprow2 = _interopRequireDefault(_Toprow);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12647,7 +12642,8 @@ var Board = function (_React$Component) {
 				'div',
 				{ style: this.getStyles() },
 				_react2.default.createElement(_Bottomrow2.default, null),
-				_react2.default.createElement(_Leftrow2.default, null)
+				_react2.default.createElement(_Leftrow2.default, null),
+				_react2.default.createElement(_Toprow2.default, null)
 			);
 		}
 	}]);
@@ -29351,7 +29347,6 @@ var Leftrow = function (_React$Component) {
 		key: 'getStyles',
 		value: function getStyles() {
 			return {
-				border: '1px solid red',
 				maxWidth: '12vw',
 				position: 'absolute',
 				left: 0,
@@ -29382,6 +29377,174 @@ var Leftrow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _radium2.default)(Leftrow);
+
+/***/ }),
+/* 299 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radium = __webpack_require__(14);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Block = __webpack_require__(29);
+
+var _Block2 = _interopRequireDefault(_Block);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Parkingblock = function (_React$Component) {
+    _inherits(Parkingblock, _React$Component);
+
+    function Parkingblock() {
+        _classCallCheck(this, Parkingblock);
+
+        return _possibleConstructorReturn(this, (Parkingblock.__proto__ || Object.getPrototypeOf(Parkingblock)).apply(this, arguments));
+    }
+
+    _createClass(Parkingblock, [{
+        key: 'getStyles',
+        value: function getStyles() {
+            return {
+                base: {
+                    margin: '0'
+                },
+                img: {
+                    maxWidth: '100%',
+                    maxHeight: '80%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    display: 'block'
+                },
+                text: {
+                    margin: '0',
+                    display: 'block',
+                    textAlign: 'center',
+                    fontSize: '1.5vh'
+                }
+            };
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _Block2.default,
+                { style: this.getStyles().base, width: 'large' },
+                _react2.default.createElement('img', { style: this.getStyles().img, src: 'graphics/free_parking.png' }),
+                _react2.default.createElement(
+                    'p',
+                    { style: this.getStyles().text },
+                    'free parking'
+                )
+            );
+        }
+    }]);
+
+    return Parkingblock;
+}(_react2.default.Component);
+
+exports.default = (0, _radium2.default)(Parkingblock);
+
+/***/ }),
+/* 300 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radium = __webpack_require__(14);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Cchestblock = __webpack_require__(66);
+
+var _Cchestblock2 = _interopRequireDefault(_Cchestblock);
+
+var _Regularblock = __webpack_require__(67);
+
+var _Regularblock2 = _interopRequireDefault(_Regularblock);
+
+var _Imageblock = __webpack_require__(38);
+
+var _Imageblock2 = _interopRequireDefault(_Imageblock);
+
+var _Parkingblock = __webpack_require__(299);
+
+var _Parkingblock2 = _interopRequireDefault(_Parkingblock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Toprow = function (_React$Component) {
+  _inherits(Toprow, _React$Component);
+
+  function Toprow() {
+    _classCallCheck(this, Toprow);
+
+    return _possibleConstructorReturn(this, (Toprow.__proto__ || Object.getPrototypeOf(Toprow)).apply(this, arguments));
+  }
+
+  _createClass(Toprow, [{
+    key: 'getStyles',
+    value: function getStyles() {
+      return {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        border: '1px solid red'
+      };
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        _defineProperty({ style: this.getStyles() }, 'style', this.getStyles()),
+        _react2.default.createElement(_Parkingblock2.default, null),
+        _react2.default.createElement(_Regularblock2.default, { text: 'Kentucky Avenue', color: 'red', cost: 220 })
+      );
+    }
+  }]);
+
+  return Toprow;
+}(_react2.default.Component);
+
+exports.default = (0, _radium2.default)(Toprow);
 
 /***/ })
 /******/ ]);

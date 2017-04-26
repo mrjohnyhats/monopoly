@@ -8,7 +8,6 @@ import Imageblock from './Imageblock'
 class Leftrow extends React.Component {
 	getStyles(){
 		return {
-			border: '1px solid red',
 			maxWidth: '12vw',
 			position: 'absolute',
 			left: 0,
