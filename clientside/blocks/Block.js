@@ -6,30 +6,30 @@ class Block extends React.Component {
 	getStyles(){
 		return {
 			base: {
-				height: '15vw',
+				height: '12vw',
 				display: 'inline-block',
 				border: '1px solid black',
 				margin: 0,
 				float: 'left'
 			},
 			vertical: {
-				width: '15vw',
+				width: '12vw',
 				display: 'block'
 			},
 			small: {
 				vertical: {
-					height: '8.5vh'
+					height: '8.2vh'
 				},
 				horizontal: {
-					width: '8.5vw'
+					width: '8.2vw'
 				}
 			},
 			large: {
 				vertical: {
-					height: '15vh'
+					height: '12vh'
 				},
 				horizontal: {
-					width: '15vw'
+					width: '12vw'
 				}
 			}
 		}

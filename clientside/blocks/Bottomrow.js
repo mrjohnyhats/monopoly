@@ -9,21 +9,22 @@ class Bottomrow extends React.Component {
 	getStyles(){
 		return {
 			position: 'absolute',
-			bottom: 0,
-			right: 0
+			right: 0,
+			bottom: 0
 		}
 	}
 
 	render(){
 		return (<div style={this.getStyles()}>
+				<Regularblock color="lightblue" text="Connecticut Avenue" cost={120}/>
 				<Regularblock color="lightblue" text="Vermont Avenue" cost={100}/>
 				<Imageblock text="chance" imgsrc="graphics/chance.png"/>
 				<Regularblock color="lightblue" text="Oriental Avenue" cost={100}/>
 				<Imageblock text="reading railroad" imgsrc="graphics/train.png" cost={200}/>
 				<Imageblock imgsrc="graphics/income_tax.png"/>
+				<Regularblock color="brown" text="Baltic Avenue" cost={60}/>
 				<Cchestblock/>
-				<Regularblock color="green" text="Mediteranean Avenue" cost={60}/>
-				<Regularblock color="lightblue" text="Connecticut Avenue" cost={120}/>
+				<Regularblock color="brown" text="Mediteranean Avenue" cost={60}/>
 				<Goblock/>
 			</div>);
 	}

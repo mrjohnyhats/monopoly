@@ -13,15 +13,26 @@ class Imageblock extends React.Component {
 				marginTop: '5%',
 			},
 			img: {
-				maxHeight: '50%',
-				maxWidth: '80%',
-				padding: '10%',
-				marginLeft: 'auto',
-				marginRight: 'auto',
-				display: 'block'
+				base: {
+					maxWidth: '80%',
+					marginLeft: 'auto',
+					marginRight: 'auto',
+					marginBottom: '0',
+					display: 'block'
+				},
+				horizontal: {
+					maxHeight: '50%',
+					paddingTop: '10%',
+					paddingBottom: '5%',
+				},
+				vertical: {
+					maxHeight: '40%',
+					padding: '0'
+				}
 			},
 			cost: {
-				marginBottom: '2%'
+				marginBottom: '2%',
+				margonTop: '0'
 			}
 		}
 	}
@@ -34,9 +45,18 @@ class Imageblock extends React.Component {
 		if(this.props.text 	!= undefined){
 			text = <p style={this.getStyles().text}>{this.props.text}</p>
 		}
+
+		let imgstyles = [this.getStyles().img.base];
+
+		if(this.props.orientation == 'horizontal'){
+			imgstyles.push(this.getStyles().img.horizontal);
+		} else if(this.props.orientation == 'vertical'){
+			imgstyles.push(this.getStyles().img.vertical);
+		}
+
 		return (<Block width="small" orientation={this.props.orientation}>
 				{text}
-				<img style={this.getStyles().img} src={this.props.imgsrc}/>
+				<img style={imgstyles} src={this.props.imgsrc}/>
 				{cost}
 			</Block>);
 	}
@@ -48,7 +68,7 @@ Imageblock.propTypes = {
 	cost: PropTypes.number
 };
 
-Imageblock.defaulsProps = {
+Imageblock.defaultProps = {
 	orientation: 'horizontal'
 };
 
