@@ -26,3 +26,5 @@ Chanceblock.defaultProps = {
     color: 'pink',
     orientation: 'horizontal'
 }
+
+export default Radium(Chanceblock);

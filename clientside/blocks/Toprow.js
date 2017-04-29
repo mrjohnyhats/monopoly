@@ -21,6 +21,14 @@ class Toprow extends React.Component {
 		return (<div style={this.getStyles()} style={this.getStyles()}>
                 <Parkingblock/>
                 <Regularblock text="Kentucky Avenue" color="red" cost={220}/>
+                <Chanceblock color="blue"/>
+                <Regularblock text="Indiana Avenue" color="red" cost={220}/>
+                <Regularblock text="Illinois Avenue" color="red" cost={240}/>
+                <Imageblock text="B & O Railroad" imgsrc="graphics/train.png" cost={200}/>
+                <Regularblock text="Atlantic Avenue" color="yellow" cost={260}/>
+                <Regularblock text="Ventor Avenue" color="yellow" cost={260}/>
+                <Imageblock text="Water Works" imgsrc="somewaterimg" cost={150}/>
+                <Regularblock text="Marvin Gardens" color="yellow" cost={280}/>
 			</div>);
 	}
 }
