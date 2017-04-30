@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import {createStore} from 'redux';
-import reducer from './reducer'
+import headReducer from './reducers/head'
 import Board_container from './Board_container'
+
 // import Radium from 'radium'
 
-const store = createStore(reducer);
+const store = createStore(headReducer);
 
 ReactDom.render(<Board_container store={store}/>, document.getElementById('app'));

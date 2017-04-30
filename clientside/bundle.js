@@ -12547,25 +12547,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = (0, _reactRedux.connect)()(_Board2.default);
 
 /***/ }),
-/* 119 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var reducer = function reducer() {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	var action = arguments[1];
-
-	return state;
-};
-
-exports.default = reducer;
-
-/***/ }),
+/* 119 */,
 /* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13272,9 +13254,9 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _redux = __webpack_require__(67);
 
-var _reducer = __webpack_require__(119);
+var _head = __webpack_require__(303);
 
-var _reducer2 = _interopRequireDefault(_reducer);
+var _head2 = _interopRequireDefault(_head);
 
 var _Board_container = __webpack_require__(118);
 
@@ -13284,7 +13266,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import Radium from 'radium'
 
-var store = (0, _redux.createStore)(_reducer2.default);
+var store = (0, _redux.createStore)(_head2.default);
 
 _reactDom2.default.render(_react2.default.createElement(_Board_container2.default, { store: store }), document.getElementById('app'));
 
@@ -29827,6 +29809,83 @@ var Rightrow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _radium2.default)(Rightrow);
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _popUps = __webpack_require__(305);
+
+var _popUps2 = _interopRequireDefault(_popUps);
+
+var _actionTypes = __webpack_require__(307);
+
+var _actionTypes2 = _interopRequireDefault(_actionTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+	playerQuan: 0,
+	players: {},
+	curPopUp: {},
+	error: ""
+};
+
+var reducer = function reducer() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	if (action.type == _actionTypes2.default.CREATE_POPUP) state = (0, _popUps2.default)(state, action);else if (action.type == _actionTypes2.default.ERROR) state.error = action.msg;
+	return state;
+};
+
+exports.default = reducer;
+
+/***/ }),
+/* 304 */,
+/* 305 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var reducer = function reducer(state, action) {
+    if (state.curPopUp == {}) {
+        state.curPopUp = action.popUp;
+    } else {
+        state.error = "cannot display \"${action.popUp.name}\" popup while \"${state.curPopUp.name}\" is displayed";
+    }
+};
+
+exports.default = reducer;
+
+/***/ }),
+/* 306 */,
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var actionTypes = {
+    ERROR: 1,
+    CREATE_POPUP: 2
+};
+
+exports.default = actionTypes;
 
 /***/ })
 /******/ ]);
