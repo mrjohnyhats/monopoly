@@ -10,14 +10,16 @@ class PopUp extends React.Component {
                 position: 'absolute',
                 margin: 'auto',
                 display: 'block',
-                transition: 'fade-in-out 0.2s'
+                transition: 'fade-in-out 0.2s',
+                backgroundColor: 'red'
             }
         };
     }
 
     render(){
-        if(this.props.popUpObj){
+        // console.log(`popUpObj: ${this.props.popUpObj}`);
 
+        if(this.props.popUpObj != null){
             return (<div style={this.getStyles().base}>
                 <p>{this.props.popUpObj.text}</p>
                 {this.props.children}

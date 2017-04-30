@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        removePopup: dispatch(popUpActions.removePopUp())
+        removePopUp: () => dispatch(popUpActions.removePopUp())
     };
 }
 

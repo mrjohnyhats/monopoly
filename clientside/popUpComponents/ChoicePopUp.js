@@ -5,9 +5,13 @@ import PopUp from './PopUp';
 
 class ChoicePopUp extends React.Component {
     render(){
-        return (<PopUp popUpObj={this.props.popUpObj}>
+        if(this.props.popUpObj != null && this.props.popUpObj.type == 'choice'){
+            return (<PopUp popUpObj={this.props.popUpObj}>
 
-            </PopUp>);
+                </PopUp>);
+        } else {
+            return null;
+        }
     }
 }
 

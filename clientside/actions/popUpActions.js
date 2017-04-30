@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 
-class Default {
+class DefaultPopUp {
     constructor(name, text){
         this.name = name;
         this.text = text;
@@ -8,7 +8,7 @@ class Default {
     }
 }
 
-class Choices extends Default {
+class ChoicesPopUp extends DefaultPopUp {
     constructor(name, text, choices){
         super(name, text);
         this.type = 'choice';
@@ -16,7 +16,7 @@ class Choices extends Default {
     }
 }
 
-class Input extends Default {
+class InputPopUp extends DefaultPopUp {
     constructor(name, text){
         super(name, text);
         this.type = 'input';
@@ -24,23 +24,23 @@ class Input extends Default {
 }
 
 
-const alert = (text, name='alert with text: ${text}') => {
+const alert = (text, name=`alert with text: ${text}`) => {
     return {
-        popUp: new Default(name, text),
+        popUp: new DefaultPopUp(name, text),
         type: actionTypes.CREATE_POPUP
     };
 }
 
-const choice = (text, choices, name='popup of choices: ${choices.join(\', \')}') => {
+const choice = (text, choices, name=`popup of choices: ${choices.join(', ')}`) => {
     return {
-        popUp: new Choices(name, text, choices),
+        popUp: new ChoicesPopUp(name, text, choices),
         type: actionTypes.CREATE_POPUP
     };
 }
 
-const input = (text, name='input popup with text: ${text}') => {
+const input = (text, name=`input popup with text: ${text}`) => {
     return {
-        popUp: new Input(name, text),
+        popUp: new InputPopUp(name, text),
         type: actionTypes.CREATE_POPUP
     };
 }

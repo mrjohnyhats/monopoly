@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import headReducer from './reducers/head'
 import BoardContainer from './BoardContainer'
 import AllPopUpContainers from './popUpComponents/AllPopUpContainers';
+import popUpActions from './actions/popUpActions';
 
 const store = createStore(headReducer);
 
@@ -18,3 +19,5 @@ const elems = (
 );
 
 ReactDom.render(elems, document.getElementById('app'));
+
+store.dispatch(popUpActions.alert('hello, world'));
