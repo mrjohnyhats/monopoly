@@ -8,42 +8,52 @@ class Default {
     }
 }
 
-class Buttons extends Default {
-    constructor(name, text, buttons){
+class Choices extends Default {
+    constructor(name, text, choices){
         super(name, text);
-        this.type = 'buttons';
-        this.buttons = buttons;
+        this.type = 'choice';
+        this.choices = choices;
     }
 }
 
-class TextField extends Default {
+class Input extends Default {
     constructor(name, text){
         super(name, text);
-        this.type = 'textField';
+        this.type = 'input';
     }
 }
+
 
 const alert = (text, name='alert with text: ${text}') => {
     return {
         popUp: new Default(name, text),
         type: actionTypes.CREATE_POPUP
-    }
+    };
 }
 
 const choice = (text, choices, name='popup of choices: ${choices.join(\', \')}') => {
-    return: {
-        popUp: new Buttons(name, text, choices),
+    return {
+        popUp: new Choices(name, text, choices),
         type: actionTypes.CREATE_POPUP
-    }
+    };
 }
 
 const input = (text, name='input popup with text: ${text}') => {
-    popUp: new TextField(name, text),
-    type: actionTypes.CREATE_POPUP
+    return {
+        popUp: new Input(name, text),
+        type: actionTypes.CREATE_POPUP
+    };
+}
+
+const removePopUp = () => {
+    return {
+        type: actionTypes.REMOVE_POPUP
+    };
 }
 
 export default {
     alert,
     choice,
-    input
+    input,
+    removePopUp
 };

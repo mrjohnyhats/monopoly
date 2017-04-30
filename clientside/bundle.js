@@ -12526,27 +12526,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 118 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Board = __webpack_require__(121);
-
-var _Board2 = _interopRequireDefault(_Board);
-
-var _reactRedux = __webpack_require__(277);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = (0, _reactRedux.connect)()(_Board2.default);
-
-/***/ }),
+/* 118 */,
 /* 119 */,
 /* 120 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -13254,21 +13234,36 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _redux = __webpack_require__(67);
 
+var _reactRedux = __webpack_require__(277);
+
 var _head = __webpack_require__(303);
 
 var _head2 = _interopRequireDefault(_head);
 
-var _Board_container = __webpack_require__(118);
+var _BoardContainer = __webpack_require__(309);
 
-var _Board_container2 = _interopRequireDefault(_Board_container);
+var _BoardContainer2 = _interopRequireDefault(_BoardContainer);
+
+var _AllPopUpContainers = __webpack_require__(310);
+
+var _AllPopUpContainers2 = _interopRequireDefault(_AllPopUpContainers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import Radium from 'radium'
-
 var store = (0, _redux.createStore)(_head2.default);
 
-_reactDom2.default.render(_react2.default.createElement(_Board_container2.default, { store: store }), document.getElementById('app'));
+var elems = _react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store },
+    _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_BoardContainer2.default, null),
+        _react2.default.createElement(_AllPopUpContainers2.default, null)
+    )
+);
+
+_reactDom2.default.render(elems, document.getElementById('app'));
 
 /***/ }),
 /* 130 */
@@ -29821,9 +29816,9 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _popUps = __webpack_require__(305);
+var _popUpCreation = __webpack_require__(308);
 
-var _popUps2 = _interopRequireDefault(_popUps);
+var _popUpCreation2 = _interopRequireDefault(_popUpCreation);
 
 var _actionTypes = __webpack_require__(307);
 
@@ -29842,7 +29837,7 @@ var reducer = function reducer() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	var action = arguments[1];
 
-	if (action.type == _actionTypes2.default.CREATE_POPUP) state = (0, _popUps2.default)(state, action);else if (action.type == _actionTypes2.default.ERROR) state.error = action.msg;
+	if (action.type == _actionTypes2.default.CREATE_POPUP) state = (0, _popUpCreation2.default)(state, action);else if (action.type == _actionTypes2.default.REMOVE_POPUP) state.curPopUp = {};else if (action.type == _actionTypes2.default.ERROR) state.error = action.msg;
 	return state;
 };
 
@@ -29850,7 +29845,27 @@ exports.default = reducer;
 
 /***/ }),
 /* 304 */,
-/* 305 */
+/* 305 */,
+/* 306 */,
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var actionTypes = {
+    ERROR: 1,
+    CREATE_POPUP: 2,
+    REMOVE_POPUP: 3
+};
+
+exports.default = actionTypes;
+
+/***/ }),
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29870,8 +29885,28 @@ var reducer = function reducer(state, action) {
 exports.default = reducer;
 
 /***/ }),
-/* 306 */,
-/* 307 */
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Board = __webpack_require__(121);
+
+var _Board2 = _interopRequireDefault(_Board);
+
+var _reactRedux = __webpack_require__(277);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _reactRedux.connect)()(_Board2.default);
+
+/***/ }),
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29880,12 +29915,448 @@ exports.default = reducer;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var actionTypes = {
-    ERROR: 1,
-    CREATE_POPUP: 2
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _DefaultPopUpContainer = __webpack_require__(315);
+
+var _DefaultPopUpContainer2 = _interopRequireDefault(_DefaultPopUpContainer);
+
+var _ChoicePopUpContainer = __webpack_require__(314);
+
+var _ChoicePopUpContainer2 = _interopRequireDefault(_ChoicePopUpContainer);
+
+var _InputPopUpContainer = __webpack_require__(317);
+
+var _InputPopUpContainer2 = _interopRequireDefault(_InputPopUpContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AllPopUpContainers = function (_React$Component) {
+    _inherits(AllPopUpContainers, _React$Component);
+
+    function AllPopUpContainers() {
+        _classCallCheck(this, AllPopUpContainers);
+
+        return _possibleConstructorReturn(this, (AllPopUpContainers.__proto__ || Object.getPrototypeOf(AllPopUpContainers)).apply(this, arguments));
+    }
+
+    _createClass(AllPopUpContainers, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_DefaultPopUpContainer2.default, null),
+                _react2.default.createElement(_ChoicePopUpContainer2.default, null),
+                _react2.default.createElement(_InputPopUpContainer2.default, null)
+            );
+        }
+    }]);
+
+    return AllPopUpContainers;
+}(_react2.default.Component);
+
+exports.default = AllPopUpContainers;
+
+/***/ }),
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radium = __webpack_require__(10);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PopUp = function (_React$Component) {
+    _inherits(PopUp, _React$Component);
+
+    function PopUp() {
+        _classCallCheck(this, PopUp);
+
+        return _possibleConstructorReturn(this, (PopUp.__proto__ || Object.getPrototypeOf(PopUp)).apply(this, arguments));
+    }
+
+    _createClass(PopUp, [{
+        key: 'getStyles',
+        value: function getStyles() {
+            return {
+                base: {
+                    zIndex: 2,
+                    position: 'absolute',
+                    margin: 'auto',
+                    display: 'block',
+                    transition: 'fade-in-out 0.2s'
+                }
+            };
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            if (this.props.popUpObj) {
+
+                return _react2.default.createElement(
+                    'div',
+                    { style: this.getStyles().base },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        this.props.popUpObj.text
+                    ),
+                    this.props.children
+                );
+            } else {
+                return null;
+            }
+        }
+    }]);
+
+    return PopUp;
+}(_react2.default.Component);
+
+exports.default = (0, _radium2.default)(PopUp);
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(277);
+
+var _PopUpActions = __webpack_require__(318);
+
+var _PopUpActions2 = _interopRequireDefault(_PopUpActions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+    return {
+        popUpObj: state.curPopUp
+    };
 };
 
-exports.default = actionTypes;
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        removePopup: dispatch(_PopUpActions2.default.removePopUp())
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps);
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radium = __webpack_require__(10);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _PopUp = __webpack_require__(311);
+
+var _PopUp2 = _interopRequireDefault(_PopUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ChoicePopUp = function (_React$Component) {
+    _inherits(ChoicePopUp, _React$Component);
+
+    function ChoicePopUp() {
+        _classCallCheck(this, ChoicePopUp);
+
+        return _possibleConstructorReturn(this, (ChoicePopUp.__proto__ || Object.getPrototypeOf(ChoicePopUp)).apply(this, arguments));
+    }
+
+    _createClass(ChoicePopUp, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_PopUp2.default, { popUpObj: this.props.popUpObj });
+        }
+    }]);
+
+    return ChoicePopUp;
+}(_react2.default.Component);
+
+exports.default = (0, _radium2.default)(ChoicePopUp);
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _makeContainer = __webpack_require__(312);
+
+var _makeContainer2 = _interopRequireDefault(_makeContainer);
+
+var _ChoicePopUp = __webpack_require__(313);
+
+var _ChoicePopUp2 = _interopRequireDefault(_ChoicePopUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _makeContainer2.default)(_ChoicePopUp2.default);
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _makeContainer = __webpack_require__(312);
+
+var _makeContainer2 = _interopRequireDefault(_makeContainer);
+
+var _PopUp = __webpack_require__(311);
+
+var _PopUp2 = _interopRequireDefault(_PopUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _makeContainer2.default)(_PopUp2.default);
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radium = __webpack_require__(10);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _PopUp = __webpack_require__(311);
+
+var _PopUp2 = _interopRequireDefault(_PopUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var InputPopUp = function (_React$Component) {
+    _inherits(InputPopUp, _React$Component);
+
+    function InputPopUp() {
+        _classCallCheck(this, InputPopUp);
+
+        return _possibleConstructorReturn(this, (InputPopUp.__proto__ || Object.getPrototypeOf(InputPopUp)).apply(this, arguments));
+    }
+
+    _createClass(InputPopUp, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_PopUp2.default, { popUpObj: this.props.popUpObj });
+        }
+    }]);
+
+    return InputPopUp;
+}(_react2.default.Component);
+
+exports.default = (0, _radium2.default)(InputPopUp);
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _makeContainer = __webpack_require__(312);
+
+var _makeContainer2 = _interopRequireDefault(_makeContainer);
+
+var _InputPopUp = __webpack_require__(316);
+
+var _InputPopUp2 = _interopRequireDefault(_InputPopUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _makeContainer2.default)(_InputPopUp2.default);
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _actionTypes = __webpack_require__(307);
+
+var _actionTypes2 = _interopRequireDefault(_actionTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Default = function Default(name, text) {
+    _classCallCheck(this, Default);
+
+    this.name = name;
+    this.text = text;
+    this.type = 'default';
+};
+
+var Choices = function (_Default) {
+    _inherits(Choices, _Default);
+
+    function Choices(name, text, choices) {
+        _classCallCheck(this, Choices);
+
+        var _this = _possibleConstructorReturn(this, (Choices.__proto__ || Object.getPrototypeOf(Choices)).call(this, name, text));
+
+        _this.type = 'choice';
+        _this.choices = choices;
+        return _this;
+    }
+
+    return Choices;
+}(Default);
+
+var Input = function (_Default2) {
+    _inherits(Input, _Default2);
+
+    function Input(name, text) {
+        _classCallCheck(this, Input);
+
+        var _this2 = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this, name, text));
+
+        _this2.type = 'input';
+        return _this2;
+    }
+
+    return Input;
+}(Default);
+
+var alert = function alert(text) {
+    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'alert with text: ${text}';
+
+    return {
+        popUp: new Default(name, text),
+        type: _actionTypes2.default.CREATE_POPUP
+    };
+};
+
+var choice = function choice(text, choices) {
+    var name = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'popup of choices: ${choices.join(\', \')}';
+
+    return {
+        popUp: new Choices(name, text, choices),
+        type: _actionTypes2.default.CREATE_POPUP
+    };
+};
+
+var input = function input(text) {
+    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'input popup with text: ${text}';
+
+    return {
+        popUp: new Input(name, text),
+        type: _actionTypes2.default.CREATE_POPUP
+    };
+};
+
+var removePopUp = function removePopUp() {
+    return {
+        type: _actionTypes2.default.REMOVE_POPUP
+    };
+};
+
+exports.default = {
+    alert: alert,
+    choice: choice,
+    input: input,
+    removePopUp: removePopUp
+};
 
 /***/ })
 /******/ ]);

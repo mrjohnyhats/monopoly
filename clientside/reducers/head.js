@@ -1,4 +1,4 @@
-import popUps from './popUps'
+import popUpCreation from './popUpCreation'
 import actionTypes from '../actions/actionTypes'
 
 const initialState = {
@@ -9,7 +9,8 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-	if(action.type == actionTypes.CREATE_POPUP) state = popUps(state, action);
+	if(action.type == actionTypes.CREATE_POPUP) state = popUpCreation(state, action);
+	else if(action.type == actionTypes.REMOVE_POPUP) state.curPopUp = {};
 	else if(action.type == actionTypes.ERROR) state.error = action.msg;
 	return state;
 };

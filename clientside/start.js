@@ -1,11 +1,20 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import headReducer from './reducers/head'
-import Board_container from './Board_container'
-
-// import Radium from 'radium'
+import BoardContainer from './BoardContainer'
+import AllPopUpContainers from './popUpComponents/AllPopUpContainers';
 
 const store = createStore(headReducer);
 
-ReactDom.render(<Board_container store={store}/>, document.getElementById('app'));
+const elems = (
+    <Provider store={store}>
+        <div>
+            <BoardContainer/>
+            <AllPopUpContainers/>
+        </div>
+    </Provider>
+);
+
+ReactDom.render(elems, document.getElementById('app'));
