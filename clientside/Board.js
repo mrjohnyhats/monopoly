@@ -3,6 +3,7 @@ import Radium from 'radium'
 import Bottomrow from './blocks/Bottomrow'
 import Leftrow from './blocks/Leftrow'
 import Toprow from './blocks/Toprow'
+import Rightrow from './blocks/Rightrow'
 
 
 class Board extends React.Component {
@@ -18,6 +19,7 @@ class Board extends React.Component {
 				<Bottomrow/>
 				<Leftrow/>
 				<Toprow/>
+				<Rightrow/>
 			</div>);
 	}
 }

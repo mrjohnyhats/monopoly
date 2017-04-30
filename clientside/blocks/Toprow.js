@@ -12,8 +12,7 @@ class Toprow extends React.Component {
 		return {
             position: 'absolute',
             top: '0',
-            left: '0',
-            border: '1px solid red'
+            left: '0'
         }
 	}
 
@@ -27,7 +26,7 @@ class Toprow extends React.Component {
                 <Imageblock text="B & O Railroad" imgsrc="graphics/train.png" cost={200}/>
                 <Regularblock text="Atlantic Avenue" color="yellow" cost={260}/>
                 <Regularblock text="Ventor Avenue" color="yellow" cost={260}/>
-                <Imageblock text="Water Works" imgsrc="somewaterimg" cost={150}/>
+                <Imageblock text="Water Works" imgsrc="graphics/waterworks.jpg" cost={150}/>
                 <Regularblock text="Marvin Gardens" color="yellow" cost={280}/>
 			</div>);
 	}

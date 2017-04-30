@@ -3068,10 +3068,10 @@ var Block = function (_React$Component) {
 				},
 				small: {
 					vertical: {
-						height: '8.18vh'
+						height: '8vh'
 					},
 					horizontal: {
-						width: '8.18vw'
+						width: '8vw'
 					}
 				}
 			};
@@ -3092,8 +3092,6 @@ var Block = function (_React$Component) {
 
 				if (this.props.width == "small") {
 					styles.push(this.getStyles().small.vertical);
-				} else {
-					styles.push(this.getStyles().large.vertical);
 				}
 			}
 
@@ -12610,6 +12608,10 @@ var _Toprow = __webpack_require__(128);
 
 var _Toprow2 = _interopRequireDefault(_Toprow);
 
+var _Rightrow = __webpack_require__(302);
+
+var _Rightrow2 = _interopRequireDefault(_Rightrow);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12643,7 +12645,8 @@ var Board = function (_React$Component) {
 				{ style: this.getStyles() },
 				_react2.default.createElement(_Bottomrow2.default, null),
 				_react2.default.createElement(_Leftrow2.default, null),
-				_react2.default.createElement(_Toprow2.default, null)
+				_react2.default.createElement(_Toprow2.default, null),
+				_react2.default.createElement(_Rightrow2.default, null)
 			);
 		}
 	}]);
@@ -12690,6 +12693,10 @@ var _Imageblock = __webpack_require__(25);
 
 var _Imageblock2 = _interopRequireDefault(_Imageblock);
 
+var _Chanceblock = __webpack_require__(123);
+
+var _Chanceblock2 = _interopRequireDefault(_Chanceblock);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12713,7 +12720,8 @@ var Bottomrow = function (_React$Component) {
 			return {
 				position: 'absolute',
 				right: 0,
-				bottom: 0
+				bottom: 0,
+				margin: 0
 			};
 		}
 	}, {
@@ -12724,7 +12732,7 @@ var Bottomrow = function (_React$Component) {
 				{ style: this.getStyles() },
 				_react2.default.createElement(_Regularblock2.default, { color: 'lightblue', text: 'Connecticut Avenue', cost: 120 }),
 				_react2.default.createElement(_Regularblock2.default, { color: 'lightblue', text: 'Vermont Avenue', cost: 100 }),
-				_react2.default.createElement(_Imageblock2.default, { text: 'chance', imgsrc: 'graphics/chance.png' }),
+				_react2.default.createElement(_Chanceblock2.default, { color: 'pink' }),
 				_react2.default.createElement(_Regularblock2.default, { color: 'lightblue', text: 'Oriental Avenue', cost: 100 }),
 				_react2.default.createElement(_Imageblock2.default, { text: 'reading railroad', imgsrc: 'graphics/train.png', cost: 200 }),
 				_react2.default.createElement(_Imageblock2.default, { imgsrc: 'graphics/income_tax.png' }),
@@ -13219,8 +13227,7 @@ var Toprow = function (_React$Component) {
       return {
         position: 'absolute',
         top: '0',
-        left: '0',
-        border: '1px solid red'
+        left: '0'
       };
     }
   }, {
@@ -13237,7 +13244,7 @@ var Toprow = function (_React$Component) {
         _react2.default.createElement(_Imageblock2.default, { text: 'B & O Railroad', imgsrc: 'graphics/train.png', cost: 200 }),
         _react2.default.createElement(_Regularblock2.default, { text: 'Atlantic Avenue', color: 'yellow', cost: 260 }),
         _react2.default.createElement(_Regularblock2.default, { text: 'Ventor Avenue', color: 'yellow', cost: 260 }),
-        _react2.default.createElement(_Imageblock2.default, { text: 'Water Works', imgsrc: 'somewaterimg', cost: 150 }),
+        _react2.default.createElement(_Imageblock2.default, { text: 'Water Works', imgsrc: 'graphics/waterworks.jpg', cost: 150 }),
         _react2.default.createElement(_Regularblock2.default, { text: 'Marvin Gardens', color: 'yellow', cost: 280 })
       );
     }
@@ -29633,6 +29640,193 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 301 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(17);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(10);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Block = __webpack_require__(24);
+
+var _Block2 = _interopRequireDefault(_Block);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Gotojailblock = function (_React$Component) {
+    _inherits(Gotojailblock, _React$Component);
+
+    function Gotojailblock() {
+        _classCallCheck(this, Gotojailblock);
+
+        return _possibleConstructorReturn(this, (Gotojailblock.__proto__ || Object.getPrototypeOf(Gotojailblock)).apply(this, arguments));
+    }
+
+    _createClass(Gotojailblock, [{
+        key: 'getStyles',
+        value: function getStyles() {
+            return {
+                img: {
+                    maxWidth: '100%',
+                    maxHeight: '75%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    display: 'block'
+                },
+                text: {
+                    display: 'block',
+                    textAlign: 'center'
+                }
+            };
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _Block2.default,
+                { width: 'large', orientation: this.props.orientation },
+                _react2.default.createElement('img', { style: this.getStyles().img, src: 'graphics/go_to_jail.jpg' }),
+                _react2.default.createElement(
+                    'p',
+                    { style: this.getStyles().text },
+                    'go to jail'
+                )
+            );
+        }
+    }]);
+
+    return Gotojailblock;
+}(_react2.default.Component);
+
+Gotojailblock.propTypes = {
+    orientation: _propTypes2.default.string
+};
+
+Gotojailblock.defaultProps = {
+    orientation: 'horizontal'
+};
+
+exports.default = (0, _radium2.default)(Gotojailblock);
+
+/***/ }),
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radium = __webpack_require__(10);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _Cchestblock = __webpack_require__(39);
+
+var _Cchestblock2 = _interopRequireDefault(_Cchestblock);
+
+var _Regularblock = __webpack_require__(40);
+
+var _Regularblock2 = _interopRequireDefault(_Regularblock);
+
+var _Imageblock = __webpack_require__(25);
+
+var _Imageblock2 = _interopRequireDefault(_Imageblock);
+
+var _Gotojailblock = __webpack_require__(301);
+
+var _Gotojailblock2 = _interopRequireDefault(_Gotojailblock);
+
+var _Chanceblock = __webpack_require__(123);
+
+var _Chanceblock2 = _interopRequireDefault(_Chanceblock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Rightrow = function (_React$Component) {
+    _inherits(Rightrow, _React$Component);
+
+    function Rightrow() {
+        _classCallCheck(this, Rightrow);
+
+        return _possibleConstructorReturn(this, (Rightrow.__proto__ || Object.getPrototypeOf(Rightrow)).apply(this, arguments));
+    }
+
+    _createClass(Rightrow, [{
+        key: 'getStyles',
+        value: function getStyles() {
+            return {
+                maxWidth: '12vw',
+                height: '100%',
+                position: 'absolute',
+                margin: 0,
+                top: 0,
+                right: 0
+            };
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { style: this.getStyles() },
+                _react2.default.createElement(_Gotojailblock2.default, { orientation: 'vertical' }),
+                _react2.default.createElement(_Regularblock2.default, { text: 'Pacific Avenue', cost: 300, color: 'green', orientation: 'vertical' }),
+                _react2.default.createElement(_Regularblock2.default, { text: 'North Carolina Avenue', cost: 300, color: 'green', orientation: 'vertical' }),
+                _react2.default.createElement(_Cchestblock2.default, { orientation: 'vertical' }),
+                _react2.default.createElement(_Regularblock2.default, { text: 'Pennsylvania Avenue', cost: 320, color: 'green', orientation: 'vertical' }),
+                _react2.default.createElement(_Imageblock2.default, { text: 'Short Line', imgsrc: 'graphics/train.png', cost: 200, orientation: 'vertical' }),
+                _react2.default.createElement(_Chanceblock2.default, { color: 'orange', orientation: 'vertical' }),
+                _react2.default.createElement(_Regularblock2.default, { text: 'Park Place', cost: 350, color: 'blue', orientation: 'vertical' }),
+                _react2.default.createElement(_Imageblock2.default, { text: 'luxury tax', imgsrc: 'graphics/diamond.png', cost: 100, orientation: 'vertical' }),
+                _react2.default.createElement(_Regularblock2.default, { text: 'Boardwalk', cost: 400, color: 'blue', orientation: 'vertical' })
+            );
+        }
+    }]);
+
+    return Rightrow;
+}(_react2.default.Component);
+
+exports.default = (0, _radium2.default)(Rightrow);
 
 /***/ })
 /******/ ]);

@@ -19,10 +19,10 @@ class Block extends React.Component {
 			},
 			small: {
 				vertical: {
-					height: '8.18vh'
+					height: '8vh'
 				},
 				horizontal: {
-					width: '8.18vw'
+					width: '8vw'
 				}
 			}
 		}
@@ -42,8 +42,6 @@ class Block extends React.Component {
 
 			if(this.props.width == "small"){
 				styles.push(this.getStyles().small.vertical);
-			} else {
-				styles.push(this.getStyles().large.vertical);
 			}
 		}
 
